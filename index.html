@@ -437,7 +437,7 @@
         <h2>Me conte o que você precisa.</h2>
         <p>Carta para o restaurante, presente para clientes ou aquele vinho para um momento especial. Respondo pessoalmente.</p>
         <div class="canais">
-          <a href="#" data-zap="Olá, Vinicius! Vim pelo seu site."><svg style="fill:currentColor;stroke:none"><use href="#i-zap"/></svg><span><small>WhatsApp</small><span id="tel-txt">(11) 9XXXX-XXXX</span></span></a>
+          <a href="#" data-zap="Olá, Vinicius! Vim pelo seu site."><svg style="fill:currentColor;stroke:none"><use href="#i-zap"/></svg><span><small>WhatsApp</small><span id="tel-txt">(11) 94816-8047</span></span></a>
           <a href="https://www.instagram.com/vinicius.mattos_/" target="_blank" rel="noopener"><svg><use href="#i-insta"/></svg><span><small>Instagram</small>@vinicius.mattos_</span></a>
           <a href="https://www.decanter.com.br/" target="_blank" rel="noopener"><svg><use href="#i-globo"/></svg><span><small>Importadora</small>decanter.com.br</span></a>
         </div>
@@ -499,8 +499,7 @@
 <a class="zap" data-zap="Olá, Vinicius! Vim pelo seu site e gostaria de uma indicação de vinhos." href="#" aria-label="Conversar no WhatsApp"><svg><use href="#i-zap"/></svg></a>
 
 <script>
-  // TODO: trocar pelo WhatsApp do Vinicius (DDI + DDD + número)
-  const WHATS = '5511900000000';
+  const WHATS = '5511948168047';
   const linkZap = msg => `https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`;
   const aplicaZap = (raiz = document) => raiz.querySelectorAll('[data-zap]').forEach(a => { a.href = linkZap(a.dataset.zap); a.target = '_blank'; a.rel = 'noopener'; });
 
