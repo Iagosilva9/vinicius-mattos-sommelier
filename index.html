@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vinicius Mattos · Sommelier Decanter</title>
+<meta name="description" content="Vinicius Mattos, sommelier e consultor da Decanter Importadora. Cartas de vinho para restaurantes e bares, presentes corporativos e seleção de rótulos para a sua adega.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2a0f17">
+<meta property="og:title" content="Vinicius Mattos · Sommelier Decanter">
+<meta property="og:description" content="Cartas de vinho, consultoria e rótulos Decanter para restaurantes, empresas e apreciadores.">
+<meta property="og:image" content="img/desangre.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232a0f17'/><text x='32' y='42' font-family='Georgia,serif' font-size='28' fill='%23d9b77a' text-anchor='middle'>VM</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vinho:#5b1a2b; --vinho-esc:#2a0f17; --vinho-med:#3d1420; --bordo:#7d2638;
+    --ouro:#d9b77a; --ouro-esc:#b8955a; --creme:#f7f1e8; --papel:#fbf8f3; --tinta:#2b2024; --cinza:#6f6266; --linha:#e7ddd0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--tinta);background:var(--papel);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .container{width:min(1160px,100% - 32px);margin-inline:auto}
+  h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bordo);font-weight:600}
+  .eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+  section{padding:104px 0}
+  .titulo{max-width:680px;margin-bottom:52px}
+  .titulo h2{font-size:clamp(2.2rem,4.6vw,3.4rem);margin:14px 0 14px;color:var(--vinho-esc)}
+  .titulo p{color:var(--cinza);font-size:1.06rem}
+  .centro{text-align:center;margin-inline:auto}
+  .centro .eyebrow::after{content:"";width:28px;height:1px;background:currentColor}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:999px;font-weight:600;font-size:.95rem;transition:.25s;cursor:pointer;border:0;font-family:inherit}
+  .btn svg{font-size:1.15rem}
+  .btn-ouro{background:var(--ouro);color:var(--vinho-esc)}
+  .btn-ouro:hover{background:#e6c78e;transform:translateY(-2px)}
+  .btn-linha{border:1px solid rgba(247,241,232,.4);color:var(--creme)}
+  .btn-linha:hover{border-color:var(--ouro);color:var(--ouro)}
+  .btn-vinho{background:var(--vinho);color:var(--creme)}
+  .btn-vinho:hover{background:var(--bordo);transform:translateY(-2px)}
+
+  /* topo */
+  header{position:fixed;inset:0 0 auto;z-index:50;transition:.3s}
+  header.solido{background:rgba(42,15,23,.94);backdrop-filter:blur(10px);box-shadow:0 6px 30px rgba(0,0,0,.25)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .logo{display:flex;align-items:center;gap:12px;color:var(--creme)}
+  .logo .mono{width:44px;height:44px;border:1px solid var(--ouro);border-radius:50%;display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--ouro);font-weight:600}
+  .logo b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;line-height:1}
+  .logo small{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro)}
+  .menu{display:flex;gap:30px;align-items:center;color:rgba(247,241,232,.85);font-size:.92rem}
+  .menu a:not(.btn):hover{color:var(--ouro)}
+  .menu .btn{padding:11px 22px}
+  .hamb{display:none;background:none;border:0;color:var(--creme);font-size:1.7rem;cursor:pointer}
+
+  /* hero */
+  .hero{min-height:100svh;background:radial-gradient(ellipse at 75% 40%,#6e2135 0%,var(--vinho-esc) 62%);color:var(--creme);display:flex;align-items:center;padding:120px 0 80px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:auto 0 0;height:120px;background:linear-gradient(transparent,rgba(0,0,0,.25))}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;z-index:1}
+  .hero .eyebrow{color:var(--ouro)}
+  .hero h1{font-size:clamp(3rem,7vw,5.6rem);margin:20px 0 22px;font-weight:600}
+  .hero h1 em{color:var(--ouro);font-style:italic;font-weight:500}
+  .hero p.lead{font-size:1.14rem;color:rgba(247,241,232,.82);max-width:520px;margin-bottom:36px}
+  .hero-acoes{display:flex;gap:14px;flex-wrap:wrap}
+  .selos{display:flex;gap:34px;margin-top:54px;flex-wrap:wrap}
+  .selos div{border-left:1px solid rgba(217,183,122,.45);padding-left:16px}
+  .selos b{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--ouro);line-height:1;font-weight:600}
+  .selos span{font-size:.8rem;color:rgba(247,241,232,.7);letter-spacing:.04em}
+  .garrafas{position:relative;height:560px}
+  .garrafas .halo{position:absolute;left:50%;top:50%;width:420px;height:420px;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(217,183,122,.3)}
+  .garrafas .halo::before{content:"";position:absolute;inset:34px;border-radius:50%;border:1px dashed rgba(217,183,122,.2)}
+  .garrafas figure{position:absolute;bottom:40px;width:210px;aspect-ratio:400/520;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 30px 60px rgba(0,0,0,.45);transition:.5s}
+  .garrafas figure img{width:100%;height:100%;object-fit:contain;padding:10px}
+  .garrafas figure:nth-of-type(1){left:4%;transform:rotate(-8deg);bottom:70px}
+  .garrafas figure:nth-of-type(2){left:50%;transform:translateX(-50%);bottom:110px;width:240px;z-index:2}
+  .garrafas figure:nth-of-type(3){right:4%;transform:rotate(8deg);bottom:70px}
+  .garrafas:hover figure:nth-of-type(1){transform:rotate(-12deg) translateX(-10px)}
+  .garrafas:hover figure:nth-of-type(3){transform:rotate(12deg) translateX(10px)}
+
+  /* sobre */
+  .sobre-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center}
+  .retrato{position:relative;aspect-ratio:4/5;border-radius:28px;background:linear-gradient(160deg,var(--vinho),var(--vinho-esc));display:grid;place-items:center;overflow:hidden}
+  .retrato .mono-g{font-family:'Cormorant Garamond',serif;font-size:9rem;color:var(--ouro);line-height:1;font-style:italic;opacity:.9}
+  .retrato .legenda{position:absolute;left:24px;right:24px;bottom:24px;background:rgba(251,248,243,.96);border-radius:18px;padding:18px 20px;color:var(--tinta)}
+  .retrato .legenda b{font-family:'Cormorant Garamond',serif;font-size:1.4rem;display:block;color:var(--vinho-esc)}
+  .retrato .legenda span{font-size:.85rem;color:var(--cinza)}
+  .citacao{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.7rem;color:var(--vinho);border-left:2px solid var(--ouro);padding-left:22px;margin:28px 0}
+  .sobre-txt p{color:var(--cinza);margin-bottom:16px;font-size:1.04rem}
+  .pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+  .pilares div{background:#fff;border:1px solid var(--linha);border-radius:16px;padding:18px}
+  .pilares svg{font-size:1.5rem;color:var(--bordo);margin-bottom:8px}
+  .pilares b{display:block;font-size:.95rem;color:var(--vinho-esc)}
+  .pilares span{font-size:.84rem;color:var(--cinza)}
+
+  /* serviços */
+  .servicos{background:var(--creme)}
+  .cards-serv{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .serv{background:#fff;border-radius:24px;padding:34px 30px;border:1px solid var(--linha);display:flex;flex-direction:column;transition:.3s}
+  .serv:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(91,26,43,.12)}
+  .serv.destaque{background:var(--vinho-esc);color:var(--creme);border-color:var(--vinho-esc)}
+  .serv .ic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--creme);color:var(--bordo);font-size:1.6rem;margin-bottom:22px}
+  .serv.destaque .ic{background:rgba(217,183,122,.15);color:var(--ouro)}
+  .serv .tag{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bordo);font-weight:600}
+  .serv.destaque .tag{color:var(--ouro)}
+  .serv h3{font-size:1.9rem;margin:6px 0 12px;color:var(--vinho-esc)}
+  .serv.destaque h3{color:var(--creme)}
+  .serv p{color:var(--cinza);margin-bottom:18px}
+  .serv.destaque p,.serv.destaque li{color:rgba(247,241,232,.78)}
+  .serv ul{list-style:none;margin-bottom:26px;flex:1}
+  .serv li{display:flex;gap:10px;font-size:.93rem;margin-bottom:9px;color:var(--tinta)}
+  .serv li svg{flex:none;margin-top:5px;color:var(--ouro-esc)}
+  .serv .link{font-weight:600;font-size:.93rem;color:var(--bordo);display:inline-flex;align-items:center;gap:8px}
+  .serv.destaque .link{color:var(--ouro)}
+
+  /* carta - processo */
+  .processo{background:var(--vinho-esc);color:var(--creme)}
+  .processo .titulo h2{color:var(--creme)}
+  .processo .titulo p{color:rgba(247,241,232,.7)}
+  .processo .eyebrow{color:var(--ouro)}
+  .passos{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:p}
+  .passo{border-top:1px solid rgba(217,183,122,.35);padding-top:26px;counter-increment:p}
+  .passo::before{content:"0" counter(p);font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--ouro);line-height:1;display:block;margin-bottom:14px}
+  .passo h3{font-size:1.5rem;margin-bottom:8px}
+  .passo p{color:rgba(247,241,232,.7);font-size:.95rem}
+
+  /* catálogo */
+  .filtros{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+  .filtro{padding:10px 18px;border-radius:999px;border:1px solid var(--linha);background:#fff;font:500 .9rem 'Inter',sans-serif;color:var(--tinta);cursor:pointer;transition:.2s}
+  .filtro:hover{border-color:var(--bordo)}
+  .filtro.ativo{background:var(--vinho);border-color:var(--vinho);color:var(--creme)}
+  .barra-cat{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:34px}
+  .barra-cat select{padding:10px 16px;border-radius:12px;border:1px solid var(--linha);font:inherit;font-size:.9rem;background:#fff;color:var(--tinta)}
+  .legenda-preco{font-size:.82rem;color:var(--cinza)}
+  .legenda-preco b{color:var(--bordo)}
+  .grade-vinhos{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .vinho{background:#fff;border:1px solid var(--linha);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:.3s}
+  .vinho:hover{box-shadow:0 20px 44px rgba(91,26,43,.12);transform:translateY(-4px)}
+  .vinho .foto{position:relative;background:#fff;aspect-ratio:400/440;overflow:hidden}
+  .vinho .foto img{width:100%;height:100%;object-fit:contain;padding:14px 14px 0;transition:.4s}
+  .vinho:hover .foto img{transform:scale(1.05)}
+  .vinho .tipo{position:absolute;top:14px;left:14px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:5px 11px;border-radius:999px;color:#fff}
+  .vinho .faixa{position:absolute;top:14px;right:14px;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--bordo);background:var(--creme);border-radius:999px;padding:2px 10px;font-size:1rem}
+  .vinho .info{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1;border-top:1px solid var(--linha)}
+  .vinho .origem{font-size:.76rem;color:var(--cinza);letter-spacing:.06em;text-transform:uppercase}
+  .vinho h3{font-size:1.32rem;color:var(--vinho-esc);margin:6px 0 8px}
+  .vinho .uva{font-size:.86rem;color:var(--tinta);margin-bottom:8px}
+  .vinho .harm{font-size:.84rem;color:var(--cinza);display:flex;gap:7px;margin-bottom:16px;flex:1}
+  .vinho .harm svg{flex:none;margin-top:4px;color:var(--ouro-esc)}
+  .vinho .acoes{display:flex;gap:8px}
+  .vinho .acoes a,.vinho .acoes button{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 8px;border-radius:12px;font:600 .82rem 'Inter',sans-serif;cursor:pointer;transition:.2s}
+  .vinho .consultar{background:var(--vinho);color:var(--creme);border:0}
+  .vinho .consultar:hover{background:var(--bordo)}
+  .vinho .add{background:#fff;border:1px solid var(--linha);color:var(--tinta)}
+  .vinho .add:hover{border-color:var(--bordo)}
+  .vinho .add.na-lista{background:var(--creme);border-color:var(--ouro);color:var(--vinho)}
+  .t-tinto{background:#7d2638}.t-branco{background:#b8955a}.t-espumante{background:#8a7a4a}.t-rose{background:#c4677a}.t-laranja{background:#c47a3a}.t-fortificado{background:#4a2a1a}
+  .aviso-cat{margin-top:30px;font-size:.88rem;color:var(--cinza);text-align:center}
+  .aviso-cat a{color:var(--bordo);font-weight:600;border-bottom:1px solid currentColor}
+
+  /* lista flutuante */
+  .lista{position:fixed;left:50%;bottom:22px;transform:translate(-50%,160%);z-index:60;background:var(--vinho-esc);color:var(--creme);border-radius:999px;padding:10px 10px 10px 24px;display:flex;align-items:center;gap:18px;box-shadow:0 20px 50px rgba(0,0,0,.35);transition:.4s;max-width:calc(100% - 32px)}
+  .lista.visivel{transform:translate(-50%,0)}
+  .lista span{font-size:.92rem;white-space:nowrap}
+  .lista b{color:var(--ouro)}
+  .lista .limpar{background:none;border:0;color:rgba(247,241,232,.6);font:inherit;font-size:.82rem;cursor:pointer;text-decoration:underline}
+  .lista .btn{padding:11px 20px;font-size:.88rem}
+
+  /* harmonização */
+  .harmoniza{background:var(--creme)}
+  .harm-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+  .pratos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .prato{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--linha);border-radius:16px;padding:16px;font:500 .95rem 'Inter',sans-serif;color:var(--tinta);cursor:pointer;transition:.2s;text-align:left}
+  .prato span{font-size:1.5rem}
+  .prato:hover{border-color:var(--bordo)}
+  .prato.ativo{background:var(--vinho);border-color:var(--vinho);color:var(--creme)}
+  .sugestoes{background:#fff;border-radius:24px;border:1px solid var(--linha);padding:30px;min-height:100%}
+  .sugestoes h3{font-size:1.7rem;color:var(--vinho-esc);margin-bottom:6px}
+  .sugestoes > p{color:var(--cinza);font-size:.95rem;margin-bottom:22px}
+  .sug{display:flex;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--linha)}
+  .sug img{width:64px;height:80px;object-fit:contain;flex:none}
+  .sug b{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--vinho-esc);display:block;line-height:1.2}
+  .sug small{color:var(--cinza);font-size:.84rem}
+  .sugestoes .btn{margin-top:20px}
+
+  /* faq */
+  .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
+  details{border-bottom:1px solid var(--linha);padding:20px 0}
+  summary{cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--vinho-esc);list-style:none;display:flex;justify-content:space-between;gap:20px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--ouro-esc);font-size:1.6rem;line-height:1;transition:.3s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--cinza);margin-top:10px}
+
+  /* contato */
+  .contato{background:radial-gradient(ellipse at 20% 30%,#6e2135 0%,var(--vinho-esc) 65%);color:var(--creme)}
+  .contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .contato h2{font-size:clamp(2.4rem,5vw,3.6rem);margin:16px 0}
+  .contato .eyebrow{color:var(--ouro)}
+  .contato p{color:rgba(247,241,232,.78);margin-bottom:26px}
+  .canais{display:grid;gap:12px}
+  .canais a{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid rgba(217,183,122,.3);border-radius:16px;transition:.2s}
+  .canais a:hover{border-color:var(--ouro);background:rgba(217,183,122,.06)}
+  .canais svg{font-size:1.4rem;color:var(--ouro)}
+  .canais small{display:block;font-size:.76rem;color:rgba(247,241,232,.6);letter-spacing:.08em;text-transform:uppercase}
+  form{background:var(--papel);color:var(--tinta);border-radius:26px;padding:34px}
+  form h3{font-size:1.8rem;color:var(--vinho-esc);margin-bottom:18px}
+  label{display:block;font-size:.84rem;font-weight:600;margin-bottom:6px;color:var(--vinho-esc)}
+  input,select,textarea{width:100%;padding:13px 15px;border-radius:12px;border:1px solid var(--linha);font:inherit;font-size:.95rem;background:#fff;color:var(--tinta);margin-bottom:16px}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--ouro);border-color:transparent}
+  textarea{resize:vertical;min-height:96px}
+  .opcoes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .opcoes label{margin:0;font-weight:500;font-size:.88rem;padding:9px 14px;border:1px solid var(--linha);border-radius:999px;cursor:pointer;background:#fff;color:var(--tinta)}
+  .opcoes input{display:none}
+  .opcoes input:checked + span{color:var(--creme)}
+  .opcoes label:has(input:checked){background:var(--vinho);border-color:var(--vinho);color:var(--creme)}
+  form .btn{width:100%;justify-content:center}
+  form .nota{font-size:.78rem;color:var(--cinza);margin-top:12px;text-align:center}
+
+  footer{background:#1c0a10;color:rgba(247,241,232,.6);padding:60px 0 28px;font-size:.9rem}
+  .rod-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer h4{color:var(--creme);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+  footer li{list-style:none;margin-bottom:8px}
+  footer a:hover{color:var(--ouro)}
+  .copy{border-top:1px solid rgba(247,241,232,.1);margin-top:44px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem}
+  .moderacao{color:var(--ouro);font-weight:600;letter-spacing:.04em}
+
+  .zap{position:fixed;right:22px;bottom:22px;z-index:55;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px rgba(37,211,102,.4);transition:.3s}
+  .zap svg{font-size:1.8rem;fill:currentColor;stroke:none}
+  .zap:hover{transform:scale(1.08)}
+  body.com-lista .zap{bottom:96px}
+
+  .revela{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+  .revela.on{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.revela{opacity:1;transform:none}*{transition:none!important}}
+
+  @media (max-width:1024px){
+    .grade-vinhos{grid-template-columns:repeat(3,1fr)}
+    .passos{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:900px){
+    section{padding:80px 0}
+    .menu{position:fixed;inset:78px 0 auto;background:var(--vinho-esc);flex-direction:column;padding:28px 16px 34px;gap:22px;transform:translateY(-130%);transition:.35s;box-shadow:0 20px 40px rgba(0,0,0,.3)}
+    .menu.aberto{transform:none}
+    .hamb{display:block}
+    header:has(.menu.aberto){background:var(--vinho-esc)}
+    .hero-grid,.sobre-grid,.harm-grid,.faq-grid,.contato-grid{grid-template-columns:1fr}
+    .garrafas{height:400px;max-width:460px;width:100%;margin:0 auto}
+    .garrafas figure{width:150px}
+    .garrafas figure:nth-of-type(2){width:180px}
+    .garrafas .halo{width:320px;height:320px}
+    .cards-serv{grid-template-columns:1fr}
+    .grade-vinhos{grid-template-columns:repeat(2,1fr)}
+    .retrato{max-width:420px}
+    .rod-grid{grid-template-columns:1fr}
+    .sobre-grid{gap:44px}
+  }
+  @media (max-width:520px){
+    .grade-vinhos{gap:12px}
+    .vinho .info{padding:14px}
+    .vinho h3{font-size:1.12rem}
+    .vinho .harm{display:none}
+    .vinho .acoes{flex-direction:column}
+    .passos{grid-template-columns:1fr}
+    .pilares{grid-template-columns:1fr}
+    .pratos{grid-template-columns:1fr 1fr}
+    .prato{padding:12px;font-size:.86rem}
+    .garrafas{height:330px}
+    .garrafas figure{width:118px;bottom:40px}
+    .garrafas figure:nth-of-type(2){width:146px;bottom:70px}
+    .garrafas .halo{width:260px;height:260px}
+    .selos{gap:22px}
+    form{padding:24px}
+    .lista{padding-left:18px;gap:10px}
+    .lista .limpar{display:none}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></symbol>
+  <symbol id="i-taca" viewBox="0 0 24 24"><path d="M8 2h8l1 6a5 5 0 0 1-10 0l1-6zM12 13v8M8 21h8M7.4 6h9.2"/></symbol>
+  <symbol id="i-carta" viewBox="0 0 24 24"><path d="M6 2h9l4 4v16H6zM15 2v4h4M9 11h7M9 15h7M9 19h4"/></symbol>
+  <symbol id="i-presente" viewBox="0 0 24 24"><path d="M3 8h18v4H3zM5 12v9h14v-9M12 8v13M12 8C10 3 6 4 7.5 6.5 8.4 8 12 8 12 8zm0 0c2-5 6-4 4.5-1.5C15.6 8 12 8 12 8z"/></symbol>
+  <symbol id="i-adega" viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12M7 21v-6h10v6M7 18h10"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></symbol>
+  <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-prato" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><circle cx="12" cy="13" r="3.5"/><path d="M3 3v6M5 3v6M4 9v12M20 3c-1.5 1-2 3-2 5h2v13"/></symbol>
+  <symbol id="i-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+  <symbol id="i-globo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+  <symbol id="i-pessoas" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5M16 4.8a3.5 3.5 0 0 1 0 6.4M18 14.8c2 .7 3.2 2.5 3.5 5.2"/></symbol>
+  <symbol id="i-uva" viewBox="0 0 24 24"><circle cx="9" cy="10" r="2.3"/><circle cx="15" cy="10" r="2.3"/><circle cx="12" cy="14" r="2.3"/><circle cx="9" cy="18" r="2.3"/><circle cx="15" cy="18" r="2.3"/><path d="M12 7.7V3M12 5c2-2 4-2 5-1"/></symbol>
+</svg>
+
+<header id="topo">
+  <div class="container nav">
+    <a href="#inicio" class="logo"><span class="mono">VM</span><span><b>Vinicius Mattos</b><small>Sommelier · Decanter</small></span></a>
+    <nav class="menu" id="menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#harmonizacao">Harmonização</a>
+      <a href="#contato" class="btn btn-ouro">Fale comigo</a>
+    </nav>
+    <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Sommelier · Consultor On Trade</span>
+        <h1>O vinho certo,<br><em>na mesa certa.</em></h1>
+        <p class="lead">Sou Vinicius Mattos, sommelier e consultor da Decanter Importadora. Monto cartas de vinho para restaurantes e bares, indico rótulos para a sua adega e cuido de presentes que marcam.</p>
+        <div class="hero-acoes">
+          <a href="#catalogo" class="btn btn-ouro"><svg><use href="#i-taca"/></svg> Ver catálogo</a>
+          <a href="#" class="btn btn-linha" data-zap="Olá, Vinicius! Vim pelo seu site e gostaria de uma indicação de vinhos."><svg style="fill:currentColor;stroke:none"><use href="#i-zap"/></svg> Conversar no WhatsApp</a>
+        </div>
+        <div class="selos">
+          <div><b>9+</b><span>países no portfólio</span></div>
+          <div><b>Carta</b><span>sob medida p/ seu cardápio</span></div>
+          <div><b>1 a 1</b><span>atendimento direto</span></div>
+        </div>
+      </div>
+      <div class="garrafas" aria-hidden="true">
+        <span class="halo"></span>
+        <figure><img src="img/ferrari-bdb.png" alt=""></figure>
+        <figure><img src="img/desangre.png" alt=""></figure>
+        <figure><img src="img/piocesare-barbera.png" alt=""></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="container sobre-grid">
+      <div class="retrato revela">
+        <span class="mono-g">VM</span>
+        <div class="legenda"><b>Vinicius Mattos</b><span>Sommelier · On Trade · Decanter Importadora</span></div>
+      </div>
+      <div class="sobre-txt revela">
+        <span class="eyebrow">Muito prazer</span>
+        <div class="titulo" style="margin-bottom:0"><h2>Vinho é sobre pessoas, momentos e boas escolhas.</h2></div>
+        <p>Como sommelier, meu trabalho é tirar a complicação do caminho. Eu entendo o seu cardápio, o seu público ou a ocasião, e indico o rótulo que faz sentido, do espumante para o brinde ao tinto que segura um churrasco.</p>
+        <p>Atuo no canal <strong>On Trade</strong> da <strong>Decanter</strong>, uma das importadoras mais respeitadas do Brasil, com produtores de Argentina, Chile, Portugal, Itália, França, Espanha, Uruguai e muitos outros. Isso me permite oferecer vinhos de qualidade com procedência garantida e suporte próximo.</p>
+        <p class="citacao">“Insista na felicidade. Às vezes ela vem numa taça.”</p>
+        <div class="pilares">
+          <div><svg><use href="#i-uva"/></svg><b>Curadoria</b><span>Rótulos escolhidos a dedo</span></div>
+          <div><svg><use href="#i-pessoas"/></svg><b>Proximidade</b><span>Atendimento direto comigo</span></div>
+          <div><svg><use href="#i-globo"/></svg><b>Procedência</b><span>Importação Decanter</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="servicos" id="servicos">
+    <div class="container">
+      <div class="titulo centro revela">
+        <span class="eyebrow">Como posso ajudar</span>
+        <h2>Para o seu negócio, sua empresa ou sua casa</h2>
+        <p>Do restaurante que quer uma carta de vinhos que venda, à empresa que procura um presente à altura.</p>
+      </div>
+      <div class="cards-serv" id="lista-servicos"></div>
+    </div>
+  </section>
+
+  <section class="processo">
+    <div class="container">
+      <div class="titulo revela">
+        <span class="eyebrow">Carta de vinhos Decanter</span>
+        <h2>Como montamos a carta do seu restaurante</h2>
+        <p>Uma carta bem pensada aumenta o ticket médio, gira estoque e faz o cliente voltar. O processo é simples:</p>
+      </div>
+      <div class="passos">
+        <div class="passo revela"><h3>Visita e conversa</h3><p>Conheço a casa, o cardápio, o público e a faixa de preço que funciona para você.</p></div>
+        <div class="passo revela"><h3>Seleção de rótulos</h3><p>Proponho uma carta enxuta e estratégica com vinhos Decanter, equilibrando estilos e margens.</p></div>
+        <div class="passo revela"><h3>Harmonização</h3><p>Sugiro combinações com os pratos da casa para facilitar a venda à mesa.</p></div>
+        <div class="passo revela"><h3>Treinamento e reposição</h3><p>Oriento a equipe de salão e acompanho a reposição para a carta nunca ficar furada.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalogo">
+    <div class="container">
+      <div class="titulo revela">
+        <span class="eyebrow">Catálogo</span>
+        <h2>Alguns rótulos que trabalho</h2>
+        <p>Uma seleção do portfólio Decanter. Monte sua lista e me envie pelo WhatsApp: respondo com valores atualizados, disponibilidade e condições.</p>
+      </div>
+      <div class="filtros" id="filtros"></div>
+      <div class="barra-cat">
+        <select id="filtro-pais" aria-label="Filtrar por país"></select>
+        <span class="legenda-preco">Faixa de referência: <b>$</b> até R$150 · <b>$$</b> R$150 a 300 · <b>$$$</b> acima de R$300</span>
+      </div>
+      <div class="grade-vinhos" id="grade"></div>
+      <p class="aviso-cat">Procurando um rótulo específico? O portfólio Decanter tem centenas de vinhos. <a href="#" data-zap="Olá, Vinicius! Estou procurando um vinho específico, pode me ajudar?">Me pergunte</a>.</p>
+    </div>
+  </section>
+
+  <section class="harmoniza" id="harmonizacao">
+    <div class="container harm-grid">
+      <div class="revela">
+        <span class="eyebrow">Harmonização rápida</span>
+        <div class="titulo" style="margin-bottom:28px"><h2>O que vai pra mesa hoje?</h2><p>Escolha o prato e veja o que eu abriria.</p></div>
+        <div class="pratos" id="pratos"></div>
+      </div>
+      <div class="sugestoes revela" id="sugestoes"></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container faq-grid">
+      <div class="titulo revela">
+        <span class="eyebrow">Dúvidas</span>
+        <h2>Perguntas frequentes</h2>
+        <p>Não encontrou o que procurava? Me chama no WhatsApp.</p>
+      </div>
+      <div class="revela">
+        <details open><summary>Você atende restaurantes de qualquer porte?</summary><p>Sim. De bistrôs e bares a restaurantes maiores. A carta é montada de acordo com o tamanho da casa, o cardápio e o perfil do público.</p></details>
+        <details><summary>Os vinhos são os mesmos do site da Decanter?</summary><p>Sim, trabalho com o portfólio da Decanter Importadora. Além dos rótulos daqui, consigo verificar qualquer outro vinho do catálogo para você.</p></details>
+        <details><summary>Por que o catálogo não mostra preços exatos?</summary><p>Os valores variam conforme safra, volume e condição comercial (especialmente para empresas e restaurantes). Por isso envio o preço atualizado direto pelo WhatsApp.</p></details>
+        <details><summary>Vocês fazem kits e presentes corporativos?</summary><p>Sim. Monto kits para fim de ano, clientes e eventos, com opções em diferentes faixas de valor. Quanto antes conversarmos, mais opções temos.</p></details>
+        <details><summary>Atende pessoa física também?</summary><p>Claro. Se você quer montar uma adega, acertar o vinho de um jantar ou presentear alguém, é só me chamar.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contato" id="contato">
+    <div class="container contato-grid">
+      <div class="revela">
+        <span class="eyebrow">Vamos conversar</span>
+        <h2>Me conte o que você precisa.</h2>
+        <p>Carta para o restaurante, presente para clientes ou aquele vinho para um momento especial. Respondo pessoalmente.</p>
+        <div class="canais">
+          <a href="#" data-zap="Olá, Vinicius! Vim pelo seu site."><svg style="fill:currentColor;stroke:none"><use href="#i-zap"/></svg><span><small>WhatsApp</small><span id="tel-txt">(11) 9XXXX-XXXX</span></span></a>
+          <a href="https://www.instagram.com/vinicius.mattos_/" target="_blank" rel="noopener"><svg><use href="#i-insta"/></svg><span><small>Instagram</small>@vinicius.mattos_</span></a>
+          <a href="https://www.decanter.com.br/" target="_blank" rel="noopener"><svg><use href="#i-globo"/></svg><span><small>Importadora</small>decanter.com.br</span></a>
+        </div>
+      </div>
+      <form id="form" class="revela">
+        <h3>Pedido de contato</h3>
+        <label for="f-nome">Seu nome</label>
+        <input id="f-nome" required placeholder="Como posso te chamar?">
+        <label>Você é</label>
+        <div class="opcoes">
+          <label><input type="radio" name="perfil" value="Restaurante / bar" checked><span>Restaurante / bar</span></label>
+          <label><input type="radio" name="perfil" value="Empresa"><span>Empresa</span></label>
+          <label><input type="radio" name="perfil" value="Pessoa física"><span>Pessoa física</span></label>
+        </div>
+        <label for="f-assunto">Interesse</label>
+        <select id="f-assunto">
+          <option>Montar ou renovar carta de vinhos</option>
+          <option>Presentes corporativos / kits</option>
+          <option>Indicação de vinhos</option>
+          <option>Vinhos para evento</option>
+          <option>Outro assunto</option>
+        </select>
+        <label for="f-msg">Mensagem (opcional)</label>
+        <textarea id="f-msg" placeholder="Ex.: restaurante italiano, 60 lugares, quero renovar a carta."></textarea>
+        <button class="btn btn-vinho" type="submit"><svg style="fill:currentColor;stroke:none"><use href="#i-zap"/></svg> Enviar pelo WhatsApp</button>
+        <p class="nota">Sua mensagem abre no WhatsApp. Nenhum dado fica salvo no site.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container rod-grid">
+    <div>
+      <a href="#inicio" class="logo"><span class="mono">VM</span><span><b>Vinicius Mattos</b><small>Sommelier · Decanter</small></span></a>
+      <p style="margin-top:18px;max-width:360px">Sommelier e consultor On Trade da Decanter Importadora. Cartas de vinho, presentes corporativos e curadoria de rótulos.</p>
+    </div>
+    <div>
+      <h4>Navegação</h4>
+      <ul><li><a href="#sobre">Sobre</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#catalogo">Catálogo</a></li><li><a href="#harmonizacao">Harmonização</a></li></ul>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul><li><a href="#" data-zap="Olá, Vinicius! Vim pelo seu site.">WhatsApp</a></li><li><a href="https://www.instagram.com/vinicius.mattos_/" target="_blank" rel="noopener">@vinicius.mattos_</a></li><li><a href="https://www.decanter.com.br/" target="_blank" rel="noopener">decanter.com.br</a></li></ul>
+    </div>
+  </div>
+  <div class="container copy">
+    <span>© <span id="ano"></span> Vinicius Mattos · Site pessoal de consultor. Marcas e rótulos pertencem aos seus produtores.</span>
+    <span class="moderacao">Venda proibida para menores de 18 anos. Aprecie com moderação.</span>
+  </div>
+</footer>
+
+<div class="lista" id="lista" role="status">
+  <span><b id="lista-n">0</b> vinho(s) na lista</span>
+  <button class="limpar" id="limpar" type="button">limpar</button>
+  <a class="btn btn-ouro" id="lista-env" href="#" target="_blank" rel="noopener"><svg style="fill:currentColor;stroke:none"><use href="#i-zap"/></svg> Pedir valores</a>
+</div>
+
+<a class="zap" data-zap="Olá, Vinicius! Vim pelo seu site e gostaria de uma indicação de vinhos." href="#" aria-label="Conversar no WhatsApp"><svg><use href="#i-zap"/></svg></a>
+
+<script>
+  // TODO: trocar pelo WhatsApp do Vinicius (DDI + DDD + número)
+  const WHATS = '5511900000000';
+  const linkZap = msg => `https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`;
+  const aplicaZap = (raiz = document) => raiz.querySelectorAll('[data-zap]').forEach(a => { a.href = linkZap(a.dataset.zap); a.target = '_blank'; a.rel = 'noopener'; });
+
+  // Serviços
+  const servicos = [
+    {tag:'On Trade', nome:'Restaurantes e bares', icone:'i-carta', txt:'Carta de vinhos Decanter pensada para o seu cardápio, seu público e sua margem.', itens:['Montagem e renovação de carta','Harmonização com os pratos da casa','Treinamento da equipe de salão','Acompanhamento de reposição'], msg:'Olá, Vinicius! Tenho um restaurante/bar e quero conversar sobre a carta de vinhos.', destaque:true},
+    {tag:'Corporativo', nome:'Empresas e presentes', icone:'i-presente', txt:'Presentes que mostram cuidado: kits para clientes, equipes e datas comemorativas.', itens:['Kits de fim de ano','Presentes para clientes e parceiros','Vinhos para eventos e confraternizações','Opções em várias faixas de valor'], msg:'Olá, Vinicius! Quero orçar presentes/kits de vinho para a minha empresa.'},
+    {tag:'Pessoal', nome:'Para você', icone:'i-adega', txt:'Do vinho do jantar de sábado à adega que você sempre quis ter em casa.', itens:['Indicação para cada ocasião','Montagem de adega pessoal','Vinhos para festas e casamentos','Descoberta de novos estilos'], msg:'Olá, Vinicius! Gostaria de uma indicação de vinhos para mim.'},
+  ];
+  document.getElementById('lista-servicos').innerHTML = servicos.map(s => `
+    <article class="serv revela${s.destaque ? ' destaque' : ''}">
+      <span class="ic"><svg><use href="#${s.icone}"/></svg></span>
+      <span class="tag">${s.tag}</span>
+      <h3>${s.nome}</h3>
+      <p>${s.txt}</p>
+      <ul>${s.itens.map(i => `<li><svg><use href="#i-check"/></svg>${i}</li>`).join('')}</ul>
+      <a class="link" data-zap="${s.msg}" href="#">Quero conversar <svg><use href="#i-seta"/></svg></a>
+    </article>`).join('');
+
+  // Catálogo (portfólio Decanter)
+  const tipos = {tinto:'Tinto', branco:'Branco', espumante:'Espumante', rose:'Rosé', laranja:'Laranja', fortificado:'Fortificado'};
+  const vinhos = [
+    {n:'Ferrari Maximum Blanc de Blancs', p:'Ferrari', pais:'Itália', reg:'Trento', t:'espumante', uva:'Chardonnay', h:'Entradas, frutos do mar, sushi', f:2, img:'ferrari-bdb.png', pr:['peixe','japones','queijo']},
+    {n:'Ferrari Maximum Rosé', p:'Ferrari', pais:'Itália', reg:'Trento', t:'espumante', uva:'Pinot Noir e Chardonnay', h:'Salmão, risotos, brindes especiais', f:3, img:'ferrari-rose.png', pr:['peixe','japones']},
+    {n:'Hermann Bossa Brut Nº1', p:'Vinícola Hermann', pais:'Brasil', reg:'Serra do Sudeste', t:'espumante', uva:'Corte de brancas', h:'Aperitivos, petiscos, celebrações', f:1, img:'hermann-n1.jpg', pr:['petisco']},
+    {n:'Hermann Lírica Crua Nature', p:'Vinícola Hermann', pais:'Brasil', reg:'Serra do Sudeste', t:'espumante', uva:'Corte de brancas', h:'Ostras, ceviche, frituras', f:1, img:'hermann-lirica.jpg', pr:['peixe','petisco']},
+    {n:'Sutil Sauvignon Blanc Reserve 2025', p:'Sutil', pais:'Chile', reg:'Vale Central', t:'branco', uva:'Sauvignon Blanc', h:'Saladas, peixes grelhados, queijo de cabra', f:1, img:'sutil-sb.png', pr:['peixe','salada']},
+    {n:'Bouza Albariño 2025', p:'Bouza', pais:'Uruguai', reg:'Montevidéu', t:'branco', uva:'Albariño', h:'Frutos do mar, ceviche, peixes', f:3, img:'bouza-albarino.png', pr:['peixe','japones']},
+    {n:'Quinta dos Roques Dão Branco Quinta do Correio 2024', p:'Quinta dos Roques', pais:'Portugal', reg:'Dão', t:'branco', uva:'Castas portuguesas', h:'Bacalhau, peixes, aves', f:1, img:'roques-dao.jpg', pr:['peixe']},
+    {n:'Paul Mas Mon Sauvignon Blanc 2021', p:'Domaine Paul Mas', pais:'França', reg:'Languedoc', t:'branco', uva:'Sauvignon Blanc', h:'Saladas, queijos frescos, aspargos', f:2, img:'paulmas-sb.png', pr:['salada','queijo']},
+    {n:'Phebus Malbec Rosé Estate 2024', p:'Bodegas Fabre', pais:'Argentina', reg:'Mendoza', t:'rose', uva:'Malbec', h:'Saladas, pizza, dias de calor', f:1, img:'phebus-rose.png', pr:['salada','massa','petisco']},
+    {n:'Terranoble Naranjo Disidente 2021', p:'Terranoble', pais:'Chile', reg:'Vale Central', t:'laranja', uva:'Pinot Blanc e Pinot Grigio', h:'Comida asiática, curries, queijos', f:3, img:'naranjo.jpg', pr:['japones','queijo']},
+    {n:'Luigi Bosca Malbec DOC De Sangre 2023', p:'Luigi Bosca', pais:'Argentina', reg:'Luján de Cuyo', t:'tinto', uva:'Malbec', h:'Carnes vermelhas, churrasco', f:3, img:'desangre.png', pr:['carne']},
+    {n:'Colomé Malbec Estate 2023', p:'Colomé', pais:'Argentina', reg:'Salta', t:'tinto', uva:'Malbec', h:'Cordeiro, churrasco, carnes assadas', f:2, img:'colome-estate.png', pr:['carne']},
+    {n:"Pio Cesare Barbera d'Alba 2023", p:'Pio Cesare', pais:'Itália', reg:'Piemonte', t:'tinto', uva:'Barbera', h:'Massas ao ragu, pizza, embutidos', f:3, img:'piocesare-barbera.png', pr:['massa','petisco']},
+    {n:'Bel Colle Barbaresco Convivio 2021', p:'Bel Colle', pais:'Itália', reg:'Piemonte', t:'tinto', uva:'Nebbiolo', h:'Risoto de funghi, carnes de caça', f:3, img:'barbaresco.jpg', pr:['massa','carne']},
+    {n:'Château Dauzac Comte de Dauzac 2022', p:'Château Dauzac', pais:'França', reg:'Bordeaux', t:'tinto', uva:'Corte bordalês', h:'Carnes vermelhas, queijos curados', f:2, img:'dauzac.jpg', pr:['carne','queijo']},
+    {n:'Luis Cañas Rioja Maceración Carbónica 2024', p:'Luis Cañas', pais:'Espanha', reg:'Rioja', t:'tinto', uva:'Tempranillo e Viura', h:'Tapas, embutidos, hambúrguer', f:2, img:'luiscanas.png', pr:['petisco','massa']},
+    {n:'Adega José de Sousa Tinto Artisanal 2023', p:'José Maria da Fonseca', pais:'Portugal', reg:'Alentejo', t:'tinto', uva:'Aragonez, Trincadeira e outras', h:'Assados, carne de porco, bacalhau', f:1, img:'josedesousa.jpg', pr:['carne']},
+    {n:'Viña El Principal Calicanto 2023', p:'El Principal', pais:'Chile', reg:'Vale do Maipo', t:'tinto', uva:'Cabernet Sauvignon, Carménère e Petit Verdot', h:'Carnes grelhadas, picanha', f:2, img:'calicanto.webp', pr:['carne']},
+    {n:'Phebus Malbec Reserva 2023', p:'Bodegas Fabre', pais:'Argentina', reg:'Mendoza', t:'tinto', uva:'Malbec', h:'Hambúrguer, massas, pizza', f:1, img:'phebus-reserva.png', pr:['massa','carne']},
+    {n:'Brunel de la Gardine Cairanne 2023', p:'Brunel de la Gardine', pais:'França', reg:'Vale do Rhône', t:'tinto', uva:'Corte do Rhône', h:'Ensopados, carnes de panela, ervas', f:2, img:'cairanne.jpg', pr:['carne']},
+    {n:'Moscatel de Setúbal Alambre 2021', p:'José Maria da Fonseca', pais:'Portugal', reg:'Setúbal', t:'fortificado', uva:'Moscatel de Setúbal', h:'Sobremesas, doces de ovos, queijos azuis', f:2, img:'alambre.jpg', pr:['sobremesa','queijo']},
+  ];
+
+  const lista = new Set();
+  let filtroTipo = 'todos', filtroPais = 'todos';
+  const grade = document.getElementById('grade');
+
+  const filtros = [['todos','Todos'], ...Object.entries(tipos).filter(([k]) => vinhos.some(v => v.t === k))];
+  document.getElementById('filtros').innerHTML = filtros.map(([k,l]) => `<button type="button" class="filtro${k === 'todos' ? ' ativo' : ''}" data-t="${k}">${l}${k === 'todos' ? '' : 's'}</button>`).join('');
+  const paises = [...new Set(vinhos.map(v => v.pais))].sort();
+  document.getElementById('filtro-pais').innerHTML = `<option value="todos">Todos os países</option>` + paises.map(p => `<option>${p}</option>`).join('');
+
+  const desenha = () => {
+    const itens = vinhos.map((v,i) => ({...v,i})).filter(v => (filtroTipo === 'todos' || v.t === filtroTipo) && (filtroPais === 'todos' || v.pais === filtroPais));
+    grade.innerHTML = itens.length ? itens.map(v => `
+      <article class="vinho">
+        <div class="foto"><img src="img/${v.img}" alt="Garrafa ${v.n}" loading="lazy"><span class="tipo t-${v.t}">${tipos[v.t]}</span><span class="faixa" title="Faixa de preço de referência">${'$'.repeat(v.f)}</span></div>
+        <div class="info">
+          <span class="origem">${v.pais} · ${v.reg}</span>
+          <h3>${v.n}</h3>
+          <span class="uva">${v.uva}</span>
+          <span class="harm"><svg><use href="#i-prato"/></svg>${v.h}</span>
+          <div class="acoes">
+            <a class="consultar" target="_blank" rel="noopener" href="${linkZap(`Olá, Vinicius! Vi no seu site o ${v.n} e gostaria de saber o valor e a disponibilidade.`)}">Consultar valor</a>
+            <button type="button" class="add${lista.has(v.i) ? ' na-lista' : ''}" data-i="${v.i}">${lista.has(v.i) ? '✓ Na lista' : '+ Lista'}</button>
+          </div>
+        </div>
+      </article>`).join('') : '<p style="grid-column:1/-1;color:var(--cinza)">Nenhum rótulo nessa combinação. Me pergunte pelo WhatsApp!</p>';
+  };
+
+  document.getElementById('filtros').addEventListener('click', e => {
+    const b = e.target.closest('.filtro'); if(!b) return;
+    document.querySelectorAll('.filtro').forEach(x => x.classList.toggle('ativo', x === b));
+    filtroTipo = b.dataset.t; desenha();
+  });
+  document.getElementById('filtro-pais').addEventListener('change', e => { filtroPais = e.target.value; desenha(); });
+
+  const barra = document.getElementById('lista');
+  const atualizaLista = () => {
+    document.getElementById('lista-n').textContent = lista.size;
+    barra.classList.toggle('visivel', lista.size > 0);
+    document.body.classList.toggle('com-lista', lista.size > 0);
+    const nomes = [...lista].map(i => `• ${vinhos[i].n}`).join('\n');
+    document.getElementById('lista-env').href = linkZap(`Olá, Vinicius! Montei esta lista no seu site e gostaria dos valores e da disponibilidade:\n${nomes}`);
+  };
+  grade.addEventListener('click', e => {
+    const b = e.target.closest('.add'); if(!b) return;
+    const i = +b.dataset.i;
+    lista.has(i) ? lista.delete(i) : lista.add(i);
+    b.classList.toggle('na-lista', lista.has(i));
+    b.textContent = lista.has(i) ? '✓ Na lista' : '+ Lista';
+    atualizaLista();
+  });
+  document.getElementById('limpar').addEventListener('click', () => { lista.clear(); desenha(); atualizaLista(); });
+  desenha();
+
+  // Harmonização
+  const pratos = [
+    {k:'carne', e:'🥩', l:'Carnes e churrasco'},
+    {k:'massa', e:'🍝', l:'Massas e pizzas'},
+    {k:'peixe', e:'🐟', l:'Peixes e frutos do mar'},
+    {k:'japones', e:'🍣', l:'Japonesa e asiática'},
+    {k:'queijo', e:'🧀', l:'Queijos'},
+    {k:'petisco', e:'🫒', l:'Petiscos e happy hour'},
+    {k:'salada', e:'🥗', l:'Saladas e leves'},
+    {k:'sobremesa', e:'🍮', l:'Sobremesas'},
+  ];
+  const caixaPratos = document.getElementById('pratos'), sug = document.getElementById('sugestoes');
+  caixaPratos.innerHTML = pratos.map(p => `<button type="button" class="prato" data-k="${p.k}"><span>${p.e}</span>${p.l}</button>`).join('');
+  const sugere = k => {
+    const p = pratos.find(x => x.k === k);
+    caixaPratos.querySelectorAll('.prato').forEach(b => b.classList.toggle('ativo', b.dataset.k === k));
+    const escolhidos = vinhos.filter(v => v.pr.includes(k)).slice(0, 4);
+    sug.innerHTML = `<h3>${p.e} ${p.l}</h3><p>Minhas sugestões do catálogo para esse momento:</p>` +
+      escolhidos.map(v => `<div class="sug"><img src="img/${v.img}" alt=""><div><b>${v.n}</b><small>${tipos[v.t]} · ${v.pais} · ${v.uva}</small></div></div>`).join('') +
+      `<a class="btn btn-vinho" target="_blank" rel="noopener" href="${linkZap(`Olá, Vinicius! Vou servir ${p.l.toLowerCase()} e queria uma indicação de vinho.`)}"><svg style="fill:currentColor;stroke:none"><use href="#i-zap"/></svg> Pedir indicação personalizada</a>`;
+  };
+  caixaPratos.addEventListener('click', e => { const b = e.target.closest('.prato'); if(b) sugere(b.dataset.k); });
+  sugere('carne');
+
+  // Formulário → WhatsApp
+  document.getElementById('form').addEventListener('submit', e => {
+    e.preventDefault();
+    const nome = document.getElementById('f-nome').value.trim();
+    const perfil = document.querySelector('input[name="perfil"]:checked').value;
+    const assunto = document.getElementById('f-assunto').value;
+    const msg = document.getElementById('f-msg').value.trim();
+    const texto = `Olá, Vinicius! Meu nome é ${nome}.\nPerfil: ${perfil}\nInteresse: ${assunto}` + (msg ? `\n\n${msg}` : '');
+    window.open(linkZap(texto), '_blank', 'noopener');
+  });
+
+  // Gerais
+  aplicaZap();
+  document.getElementById('ano').textContent = new Date().getFullYear();
+  const topo = document.getElementById('topo');
+  const rolagem = () => topo.classList.toggle('solido', scrollY > 40);
+  addEventListener('scroll', rolagem, {passive:true}); rolagem();
+  const menu = document.getElementById('menu'), hamb = document.getElementById('hamb');
+  hamb.addEventListener('click', () => { const a = menu.classList.toggle('aberto'); hamb.setAttribute('aria-expanded', a); hamb.textContent = a ? '✕' : '☰'; });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('aberto'); hamb.textContent = '☰'; hamb.setAttribute('aria-expanded', false); }));
+  const obs = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ en.target.classList.add('on'); obs.unobserve(en.target); } }), {threshold:.12});
+  document.querySelectorAll('.revela').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
